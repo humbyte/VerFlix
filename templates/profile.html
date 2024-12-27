@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ user.email }}
+{% endblock %}
+
+{% block content %}
+    <h1>👤 Perfil de {{ user.email }}</h1>
+    <br>
+    <form method="POST" action="{{ url_for('update_profile', user_id=user.id) }}">
+        <div>
+            <label for="pelicula_favorita">📽️ Película Favorita:</label>
+            <input type="text" id="pelicula_favorita" name="pelicula_favorita" value="{{ user.pelicula_favorita }}">
+        </div>
+        <div>
+            <label for="genero_favorito">🎞️ Género Favorito:</label>
+            <input type="text" id="genero_favorito" name="genero_favorito" value="{{ user.genero_favorito }}">
+        </div>
+        <br>
+        <button type="submit"> 🔁 Actualizar Preferencias</button>
+    </form>
+{% endblock %}
