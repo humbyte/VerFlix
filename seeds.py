@@ -4,9 +4,9 @@ from models import User, Message
 
 # Crear un nuevo usuario
 nuevo_usuario = User(
-    email="humber@grateful.cl",
-    pelicula_favorita="Interstelar",
-    genero_favorito="Ciencia Ficción"
+    email="fran@ibanez.cl",
+    pelicula_favorita="Dawn of the Living Dead",
+    genero_favorito="Terror"
 )
 
 with app.app_context():
@@ -17,8 +17,7 @@ with app.app_context():
     db.session.commit()
 
     # Crear un nuevo mensaje asociado al usuario
-    message = Message(content="¡Hola, soy Flixie! 🎬🍿 Tu compañer@ de entretenimiento para encontrar la película perfecta en VerFlix.", author="assistant", user_id=nuevo_usuario.id)
-
+    message = Message(content=f"¡Hola {nuevo_usuario.email}, soy Flixie! 🎬🍿 Tu compañer@ de entretenimiento para encontrar la película perfecta en VerFlix.", author="assistant", user_id=nuevo_usuario.id)
     db.session.add(message)
     db.session.commit()
 

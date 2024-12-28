@@ -22,13 +22,32 @@
               </div>
             {% endif %}
         {% endfor %}
-
+        <div>
+            <button onclick="sendQuickMessage('Recomendación de hoy')">Recomendación de hoy</button>
+            <button onclick="sendQuickMessage('Género favorito')">Género favorito</button>
+            <button onclick="sendQuickMessage('Sorpresa')">Sorpresa</button>
+        </div>
+        <script>
+            function sendQuickMessage(intent) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.style.display = 'none';
+    
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'intent';
+                input.value = intent;
+    
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        </script>
+        <br>      
        <form method="POST">
             <div class="input-group mb-3">
                 <input name="message" required="required" class="form-control" placeholder="Enviar mensaje a Flixie" aria-label="Tu mensaje" aria-describedby="send-message"/>
                 <input type="submit" class="btn btn-primary" id="send-message" name="intent" value="Enviar"/>
             </div>
-        </form>
-    </div>
-
+        </form>       
 {% endblock %}
